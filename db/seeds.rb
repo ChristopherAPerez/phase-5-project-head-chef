@@ -1,10 +1,10 @@
 puts "🏕 Seeding users..."
 
-gordon_ramsey = User.create(username: "gordon_ramsey", password: "master chef", bio: "", profile_pic: "")
+gordon_ramsey = User.create(username: "gordon_ramsey", password: "master chef", bio: "“Food for us comes from our relatives, whether they have wings or fins or roots. That is how we consider food. Food has a culture. It has a history. It has a story. It has relationships.”", profile_pic: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJQxsk8FXtaFHxBhj0fD0VQSLWLy5ZQ2gZEg&usqp=CAU")
 
-julia_child = User.create(username: "julia_child", password: "butter", bio: "", profile_pic: "")
+julia_child = User.create(username: "julia_child", password: "butter", bio: "I watch cooking change the cook, just as it transforms the food. I know once people get connected to real food, they never change back.", profile_pic: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJQxsk8FXtaFHxBhj0fD0VQSLWLy5ZQ2gZEg&usqp=CAU")
 
-guy_fieri = User.create(username: "guy_fieri", password: "food", bio: "", profile_pic: "")
+guy_fieri = User.create(username: "guy_fieri", password: "food", bio: "Food brings people together on many different levels. It’s nourishment of the soul and body; it’s truly love.", profile_pic: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJQxsk8FXtaFHxBhj0fD0VQSLWLy5ZQ2gZEg&usqp=CAU")
 
 puts "🏕 Seeding recipes..."
 
