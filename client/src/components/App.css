@@ -1,5 +1,29 @@
 .App {
   text-align: center;
+  width: 500px;
+  min-height: 533px;
+  max-height: 533px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: "Papyrus";
+  padding-bottom: 50px;
+  box-shadow: 0 30px 40px rgb(0, 0, 0);
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: lightblue;
+
+  border: 5px solid black;
+  border-radius: 5px;
+
+  overflow: scroll;
+}
+
+.App::-webkit-scrollbar {
+  display: none;
 }
 
 .App-logo {
@@ -32,7 +56,10 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
+
+/* Components and Pages CSS */
