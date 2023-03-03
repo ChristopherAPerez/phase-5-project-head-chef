@@ -7,7 +7,7 @@ import NavRectangle from "./NavRectangle"
 // import Menus from "../pages/Menus"
 // import Recipes from "../pages/Recipes"
 import Stats from "../pages/stats/Stats"
-// import FriendsList from "../pages/FriendsList"
+import Friends from "../pages/friends/Friends"
 import Profile from "../pages/profile/Profile"
 
 import LoggedOut from "./LoggedOut"
