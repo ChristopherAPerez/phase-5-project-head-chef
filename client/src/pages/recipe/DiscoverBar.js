@@ -50,6 +50,7 @@ function DiscoverBar() {
 
     return (
         <>
+            <br></br>
             <button className='button' onClick={() => handleAll("All")} value="All">All</button>
             <button className='button' onClick={() => handleBar("Search")} value="Search">Search</button>
             <button className='button' onClick={() => handleBar("Filter")} value="Filter">Filter</button>
@@ -59,8 +60,8 @@ function DiscoverBar() {
                 discoverBar === "All" ? (
                     <></>
                 ) : discoverBar === "Filter" ? (
-                    <form onSubmit={handleFilter}>
-                        <input className="button" type="submit" value="Filter" />
+                    <form className="discoverBar" onSubmit={handleFilter}>
+                        <input className="editButton" type="submit" value="Filter" />
                         <input
                             type="radio"
                             value="my recipes"
@@ -91,9 +92,9 @@ function DiscoverBar() {
                         Dinner
                     </form>
                 ) : (
-                    <form onSubmit={handleSearch}>
+                    <form className="discoverBar" onSubmit={handleSearch}>
                         <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} />
-                        <input className="button" type="submit" value="Search" />
+                        <input className="editButton" type="submit" value="Search" />
                     </form>
                 )
             }

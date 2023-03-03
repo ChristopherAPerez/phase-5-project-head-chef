@@ -6,6 +6,7 @@ import NavRectangle from "./NavRectangle"
 
 import Menu from "../pages/menus/CreateMenu"
 import MenuHistory from "../pages/menus/MenuHistory";
+import MyRecipes from "../pages/recipe/MyRecipes";
 import Recipes from "../pages/recipe/Recipes"
 import Stats from "../pages/stats/Stats"
 import Friends from "../pages/friends/Friends"
@@ -18,7 +19,6 @@ import SignUpForm from "./SignUpForm";
 import stir from '../images/Pot RICE blue.GIF'
 
 import './App.css';
-// import MyRecipeList from "../pages/MyRecipeList";
 
 export const UserContext = createContext();
 export const MenuContext = createContext();
@@ -139,8 +139,8 @@ function App() {
                         </Route>
                         <Route path="/friends" element={<Friends />}>
                         </Route>
-                        {/* <Route path="/my_recipes" element={<MyRecipes />}>
-                      </Route> */}
+                        <Route path="/my_recipes" element={<MyRecipes />}>
+                      </Route>
                         <Route path="/recipes" element={<Recipes />}>
                         </Route>
                         {/* <Route path="/create_recipe" element={<CreateRecipe />}>
