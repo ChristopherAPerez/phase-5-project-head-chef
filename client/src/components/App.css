@@ -272,7 +272,13 @@
   width: 100px;
   background-color: #add8e6;
   border: 1px solid black;
-  text-align: left;
+  text-align: center;
+  padding-top: 5px;
+}
+
+.friendTabletd:hover{
+  cursor: default;
+  color: yellow;
 }
 
 .myRecipeTabletd {
@@ -280,6 +286,11 @@
   background-color: #add8e6;
   border: 1px solid black;
   text-align: left;
+}
+
+.myRecipeTabletd:hover{
+  cursor: default;
+  color: yellow;
 }
 
 .myRecipeMenusTabletd{
@@ -309,6 +320,10 @@
 
 .listofMenus::-webkit-scrollbar {
   display: none;
+}
+
+.listofMenusTitle{
+  width: 300px;
 }
 
 .logo {

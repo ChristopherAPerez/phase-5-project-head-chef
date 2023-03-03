@@ -21,8 +21,8 @@ function MyRecipeCard({ recipe, setPage, setMyRecipesMenus }) {
 
     return (
         <>
-            <tr onClick={handleRecipeClick} >
-                <td className="myRecipeTabletd">
+            <tr >
+                <td className="myRecipeTabletd" onClick={handleRecipeClick}>
                     <b>{recipe.recipe_name}</b>
                 </td>
             </tr>

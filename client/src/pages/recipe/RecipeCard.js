@@ -87,7 +87,7 @@ function RecipeCard({ recipe, updatedRecipes }) {
                         console.log(err.error)
                         setTimeout(() => {
                             resetError()
-                          }, 2500);
+                        }, 2500);
                     })
                 }
             })
@@ -123,7 +123,7 @@ function RecipeCard({ recipe, updatedRecipes }) {
                         setErrors(err.errors)
                         setTimeout(() => {
                             resetErrors()
-                          }, 2500);
+                        }, 2500);
                     })
                 }
             })
@@ -141,7 +141,10 @@ function RecipeCard({ recipe, updatedRecipes }) {
                 deleteMyRecipe(recipe.id);
             } else {
                 r.json().then((err) => {
-                    alert(err.error)
+                    setErrors(err.errors)
+                    setTimeout(() => {
+                        resetErrors()
+                    }, 2500);
                 })
             }
         });
@@ -173,7 +176,7 @@ function RecipeCard({ recipe, updatedRecipes }) {
                     setErrors(err.errors)
                     setTimeout(() => {
                         resetErrors()
-                      }, 2500);
+                    }, 2500);
                 })
             }
         });
@@ -225,7 +228,7 @@ function RecipeCard({ recipe, updatedRecipes }) {
                     setErrors(err.errors)
                     setTimeout(() => {
                         resetErrors()
-                      }, 2500);
+                    }, 2500);
                 })
             }
         });
@@ -246,7 +249,7 @@ function RecipeCard({ recipe, updatedRecipes }) {
 
     return (
         <>
-            <Recipe unpublish={unpublish} recipe={recipe} openModalHandler={openModalHandler} handleMenu={handleMenu} error={error}/>
+            <Recipe unpublish={unpublish} recipe={recipe} openModalHandler={openModalHandler} handleMenu={handleMenu} error={error} />
             <ReactModal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModalHandler}
@@ -260,7 +263,7 @@ function RecipeCard({ recipe, updatedRecipes }) {
                             <>
                                 {edit ? (
                                     <form className="viewTable" onSubmit={handleSubmit}>
-                                        <EditRecipe setIngredients={setIngredients} ingredients={ingredients} recipe={recipe} meal={meal} setMeal={setMeal} pic={pic} setPic={setPic} name={name} setName={setName} description={description} setDescription={setDescription} calories={calories} setCalories={setCalories} prep={prep} setPrep={setPrep} steps={steps} setSteps={setSteps} errors={errors}/>
+                                        <EditRecipe setIngredients={setIngredients} ingredients={ingredients} recipe={recipe} meal={meal} setMeal={setMeal} pic={pic} setPic={setPic} name={name} setName={setName} description={description} setDescription={setDescription} calories={calories} setCalories={setCalories} prep={prep} setPrep={setPrep} steps={steps} setSteps={setSteps} errors={errors} />
                                         <br></br>
                                     </form>
                                 ) : (
@@ -278,6 +281,7 @@ function RecipeCard({ recipe, updatedRecipes }) {
                                                             <br></br>
                                                             {user.id === recipe.user.id ?
                                                                 <>
+                                                                    <Errors errors={errors} />
                                                                     <button className="editButton" onClick={handleEdit}>
                                                                         Edit Recipe
                                                                     </button>
@@ -367,6 +371,7 @@ function RecipeCard({ recipe, updatedRecipes }) {
                                                 autoComplete="off"
                                                 value={addNewStep}
                                                 onChange={(e) => setAddNewStep(e.target.value)}
+                                                rows="10" cols="100"
                                             />
                                             <br></br>
                                             {

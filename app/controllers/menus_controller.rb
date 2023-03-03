@@ -15,7 +15,7 @@ class MenusController < ApplicationController
             menu.update(menu_params)
             render json: menu, include: ['recipes', 'menu_to_recipes'], status: :accepted
         else
-            render json: { error: "Incomplete Menu!" }, status: :unprocessable_entity
+            render json: { errors: ["Incomplete Menu!"] }, status: :unprocessable_entity
         end
     end
 
@@ -79,9 +79,9 @@ class MenusController < ApplicationController
         menu_to_recipes.each do |menu_to_recipe|
             menu_to_recipe.destroy
         end
-        recipes.each do |recipe|
-            recipe.destroy
-        end
+        # recipes.each do |recipe|
+        #     recipe.destroy
+        # end
         render json: menu, include: ['menu_to_recipes', 'recipes']
     end
 

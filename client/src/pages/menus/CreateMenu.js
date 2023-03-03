@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 
 import MenuBar from './MenuBar'
 import MenuRecipes from './MenuRecipes';
+import Errors from "./Errors";
 import SendMenu from "./SendMenu";
 
 import { UserContext } from '../../components/App';
@@ -15,6 +16,7 @@ function CreateMenu() {
     const { menus, setMenus } = useContext(MenuContext)
 
     const [phoneNumber, setPhoneNumber] = useState('');
+    const [errors, setErrors] = useState([])
 
     function handleCreate() {
         const date = new Date();
@@ -43,20 +45,20 @@ function CreateMenu() {
             })
     }
 
-    // function sendSms() {
-    //     fetch('/send_sms', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify({
-    //             number: phoneNumber
-    //         }),
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => console.log(data))
-    //         .catch(err => console.log(err));
-    // }
+    function sendSms() {
+        fetch('/send_sms', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                number: phoneNumber
+            }),
+        })
+            .then(res => res.json())
+            .then(data => console.log(data))
+            .catch(err => console.log(err));
+    }
 
     function publishMenu() {
         fetch(`menus/${unpublish.id}`, {
@@ -77,18 +79,16 @@ function CreateMenu() {
                     })
                 } else {
                     r.json().then((err) => {
-                        alert(err.error)
+                        setErrors(err.errors)
                     })
                 }
             })
     }
 
     function sendMenu() {
-        // sendSms()
+        publishMenu()
+        sendSms()
         setPhoneNumber('')
-        setTimeout(() => {
-            publishMenu()
-        }, 3000);
     }
 
     return (
@@ -113,7 +113,8 @@ function CreateMenu() {
             <br></br>
             {unpublish ? (
                 <>
-                    <SendMenu phoneNumber={phoneNumber} setPhoneNumber={setPhoneNumber} sendMenu={sendMenu} />
+                    <Errors errors={errors} />
+                    <SendMenu phoneNumber={phoneNumber} setPhoneNumber={setPhoneNumber} sendMenu={sendMenu} setErrors={setErrors} />
                 </>
             ) : (
                 <>

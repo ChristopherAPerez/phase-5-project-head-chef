@@ -15,7 +15,7 @@ class SmsController < ApplicationController
             @client = Twilio::REST::Client.new(account_sid, auth_token)
             @client.messages.create(
             from: '18883505894',
-            to: number,
+            to: '',
             body: "┎┈┈┈┈┈┈┈୨♡୧┈┈┈┈┈┈┈┒
                          #{breakfast.recipe_name}, 
                          #{breakfast.description}, 

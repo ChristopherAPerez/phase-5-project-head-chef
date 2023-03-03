@@ -1,6 +1,6 @@
 import React from 'react';
 
-function FriendsCard({ friend, setMenu, setRecipes }) {
+function FriendsCard({ friend, setMenu, setRecipes, setErrors }) {
 
     function handleClick() {
         fetch(`/friend_last_menu/${friend.id}`).then((r) => {
@@ -11,7 +11,7 @@ function FriendsCard({ friend, setMenu, setRecipes }) {
                 })
             } else {
                 r.json().then((err) => {
-                    alert(err.error)
+                    setErrors(err.errors)
                 })
             }
         });
@@ -20,8 +20,8 @@ function FriendsCard({ friend, setMenu, setRecipes }) {
     return (
         <>
             <tr>
-                <td className='friendTabletd'>
-                    <span onClick={handleClick}><b>{friend.username}</b></span>
+                <td className='friendTabletd' onClick={handleClick}>
+                    <span><b>{friend.username}</b></span>
                 </td>
             </tr>
         </>

@@ -7,7 +7,7 @@ class FriendsController < ApplicationController
         if menu
             render json: menu, include: ['recipes']
         else
-            render json: { error: "This friends hasn't published a menu!" }, status: :unprocessable_entity
+            render json: { errors: ["Friend hasn't published a menu!"] }, status: :unprocessable_entity
         end
     end
 

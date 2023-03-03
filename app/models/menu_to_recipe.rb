@@ -1,4 +1,4 @@
 class MenuToRecipe < ApplicationRecord
-    belongs_to :menu, dependent: :delete
-    belongs_to :recipe, dependent: :delete
+    belongs_to :menu
+    belongs_to :recipe
 end

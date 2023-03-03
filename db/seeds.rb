@@ -41,14 +41,6 @@ menu = Menu.create(menu_date: "Thur 2/15/2023", user_id: gordon_ramsey.id, publi
 
 menu_two = Menu.create(menu_date: "Fri 2/16/2023", user_id: gordon_ramsey.id, publish: false)
 
-menu_three = Menu.create(menu_date: "Thur 2/15/2023", user_id: julia_child.id, publish: true)
-
-menu_four = Menu.create(menu_date: "Fri 2/16/2023", user_id: julia_child.id, publish: false)
-
-men_five = Menu.create(menu_date: "Thur 2/15/2023", user_id: guy_fieri.id, publish: true)
-
-menu_six = Menu.create(menu_date: "Fri 2/16/2023", user_id: guy_fieri.id, publish: false)
-
 puts "🏕 Seeding menu_to_recipes..."
 
 menu_to_recipes_1 = MenuToRecipe.create(name: breakfast_1.recipe_name, description: breakfast_1.description, calories: breakfast_1.calories, prep_time: breakfast_1.prep_time, menu_id: menu.id, recipe_id: breakfast_1.id)

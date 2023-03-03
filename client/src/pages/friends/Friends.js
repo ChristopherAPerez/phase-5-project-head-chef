@@ -1,8 +1,13 @@
 import React, { useContext, useState } from 'react';
-import FriendCard from './FriendCard';
-import MenuCard from './MenuCard';
-import { UserContext } from '../../components/App';
 import { useNavigate } from "react-router-dom"
+
+import FriendCard from './FriendCard';
+import Errors from './Errors';
+import MenuCard from './MenuCard';
+
+
+import { UserContext } from '../../components/App';
+
 
 function Friends() {
 
@@ -12,6 +17,7 @@ function Friends() {
 
     const [menu, setMenu] = useState(null)
     const [recipes, setRecipes] = useState([])
+    const [errors, setErrors] = useState([])
 
     function handleMainMenu() {
         navigate("/")
@@ -37,6 +43,7 @@ function Friends() {
                                 friend={friend}
                                 setMenu={setMenu}
                                 setRecipes={setRecipes}
+                                setErrors={setErrors}
                             />
                         })}
                     </tbody>
@@ -46,6 +53,11 @@ function Friends() {
                         <tr >
                             <td>
                                 <b>Latest Menu Post</b>
+                            </td>
+                        </tr>
+                        <tr >
+                            <td>
+                                <Errors errors={errors}/>
                             </td>
                         </tr>
                     </tbody>
