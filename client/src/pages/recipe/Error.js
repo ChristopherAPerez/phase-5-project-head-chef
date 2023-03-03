@@ -1,6 +1,6 @@
 import React from "react";
 
-function Errors({ errors }) {
+function Errors({ error }) {
 
     const colorStyle = {
         color: "red"
@@ -8,14 +8,7 @@ function Errors({ errors }) {
 
     return (
         <>
-            {errors.map((error) => {
-                return <>
-                    <br></br>
-                    <p style={colorStyle}><b>{error}</b></p>
-                    <br></br>
-                    <br></br>
-                </>
-            })}
+            <p style={colorStyle}><b>{error}</b></p>
         </>
     )
 }

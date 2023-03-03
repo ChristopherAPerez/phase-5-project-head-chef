@@ -2,8 +2,13 @@ class RecipesController < ApplicationController
     wrap_parameters format: []
     
     def index
-        recipes = Recipe.all
-        render json: recipes, include: ['reviews', 'user']
+        user = User.find_by(id: session[:user_id])
+        if user
+            recipes = Recipe.all
+            render json: recipes, include: ['reviews', 'user']
+        else
+            render json: { errors: ["Not authorized"] }, status: :unauthorized
+        end
     end
 
     def create
@@ -21,7 +26,7 @@ class RecipesController < ApplicationController
         if recipe.valid?
             render json: recipe, include: ['reviews', 'user'], status: :accepted
         else
-            render json: { error: "error" }, status: :unprocessable_entity
+            render json: { errors: [ recipe.errors.full_messages ] }, status: :unprocessable_entity
         end
     end
 
@@ -33,9 +38,13 @@ class RecipesController < ApplicationController
 
     def my_recipes_menus
         user = User.find_by(id: session[:user_id])
-        recipe = user.recipes.find_by(id: params[:id])
-        menus = recipe.menus.where(publish: true)
-        render json: menus, include: ['user', 'menu_to_recipes']
+        if user
+            recipe = user.recipes.find_by(id: params[:id])
+            menus = recipe.menus.where(publish: true)
+            render json: menus, include: ['user', 'menu_to_recipes']
+        else
+            render json: { errors: ["Not authorized"] }, status: :unauthorized
+        end
     end
 
     def recipes_search

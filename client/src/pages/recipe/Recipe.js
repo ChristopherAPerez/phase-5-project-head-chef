@@ -1,6 +1,8 @@
 import React from "react";
 
-function Recipe({ unpublish, recipe, openModalHandler, handleMenu }) {
+import Error from "./Error";
+
+function Recipe({ unpublish, recipe, openModalHandler, handleMenu, error }) {
 
     return (
         <>
@@ -36,6 +38,7 @@ function Recipe({ unpublish, recipe, openModalHandler, handleMenu }) {
                         </tr>
                     </tbody>
                 </table>
+                <Error error={error} />
             </div>
         </>
     )

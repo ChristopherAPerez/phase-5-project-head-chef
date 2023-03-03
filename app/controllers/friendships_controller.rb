@@ -8,7 +8,7 @@ class FriendshipsController < ApplicationController
         if friendship.save
             render json: friendship.friend
         else
-            render json: { error: "Already friends!" }, status: :unprocessable_entity
+            render json: { errors: [ friendship.errors.full_messages ] }, status: :unprocessable_entity
         end
     end
 

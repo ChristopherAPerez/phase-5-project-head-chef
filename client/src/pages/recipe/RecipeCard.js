@@ -1,9 +1,11 @@
 import React, { useContext, useState } from "react";
 
 import Recipe from './Recipe';
+import ModalNav from "./ModalNav";
 import EditRecipe from "./EditRecipe";
 import Ingredients from './Ingredients';
 import Steps from "./Steps";
+import Errors from "./Errors";
 
 import { UserContext } from '../../components/App';
 import { PublishContext } from '../../components/App';
@@ -39,6 +41,25 @@ function RecipeCard({ recipe, updatedRecipes }) {
 
     const [addNewStep, setAddNewStep] = useState("");
 
+    const [error, setError] = useState("")
+    const [errors, setErrors] = useState([])
+
+    function resetErrors() {
+        setErrors([])
+    }
+
+    function resetError() {
+        setError('')
+    }
+
+    function handlePage(value) {
+        setPage(value)
+    }
+
+    function handleEdit() {
+        setEdit(!edit)
+    }
+
     function handleMenu() {
         fetch("menu_to_recipes", {
             method: "POST",
@@ -62,17 +83,16 @@ function RecipeCard({ recipe, updatedRecipes }) {
                     });
                 } else {
                     r.json().then((err) => {
-                        alert(err.errors)
-                        console.log(err)
+                        setError(err.error)
+                        console.log(err.error)
+                        setTimeout(() => {
+                            resetError()
+                          }, 2500);
                     })
                 }
             })
 
 
-    }
-
-    function handleEdit() {
-        setEdit(!edit)
     }
 
     function handleSubmit(e) {
@@ -100,29 +120,16 @@ function RecipeCard({ recipe, updatedRecipes }) {
                     });
                 } else {
                     r.json().then((err) => {
-                        alert(err.error)
+                        setErrors(err.errors)
+                        setTimeout(() => {
+                            resetErrors()
+                          }, 2500);
                     })
                 }
             })
 
 
 
-    }
-
-    const [modalIsOpen, setModalIsOpen] = useState(false);
-
-    const openModalHandler = () => {
-        setModalIsOpen(true);
-    };
-
-    const closeModalHandler = () => {
-        setEdit(false)
-        setModalIsOpen(false);
-    };
-
-
-    function handlePage(value) {
-        setPage(value)
     }
 
     function handleDelete() {
@@ -141,9 +148,7 @@ function RecipeCard({ recipe, updatedRecipes }) {
     }
 
     function handleReview(e) {
-
         e.preventDefault();
-
         fetch(`/reviews`, {
             method: "POST",
             headers: {
@@ -165,18 +170,18 @@ function RecipeCard({ recipe, updatedRecipes }) {
                 });
             } else {
                 r.json().then((err) => {
-                    alert(err.error)
+                    setErrors(err.errors)
+                    setTimeout(() => {
+                        resetErrors()
+                      }, 2500);
                 })
             }
         });
     }
 
     function handleAddNewStep(e) {
-
         e.preventDefault();
-
         const updateStep = [...steps, addNewStep]
-
         fetch(`recipes/${recipe.id}`, {
             method: "PATCH",
             headers: {
@@ -186,7 +191,6 @@ function RecipeCard({ recipe, updatedRecipes }) {
                 steps: updateStep
             }),
         })
-
             .then((r) => {
                 if (r.ok) {
                     r.json().then((update) => {
@@ -218,39 +222,45 @@ function RecipeCard({ recipe, updatedRecipes }) {
                 });
             } else {
                 r.json().then((err) => {
-                    console.log(err.error)
-                    alert(err.error)
+                    setErrors(err.errors)
+                    setTimeout(() => {
+                        resetErrors()
+                      }, 2500);
                 })
             }
         });
     }
 
+    //////////  Modal  ///////////
+
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+
+    const openModalHandler = () => {
+        setModalIsOpen(true);
+    };
+
+    const closeModalHandler = () => {
+        setEdit(false)
+        setModalIsOpen(false);
+    };
+
     return (
         <>
-            <Recipe unpublish={unpublish} recipe={recipe} openModalHandler={openModalHandler} handleMenu={handleMenu} />
+            <Recipe unpublish={unpublish} recipe={recipe} openModalHandler={openModalHandler} handleMenu={handleMenu} error={error}/>
             <ReactModal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModalHandler}
                 ariaHideApp={false}
                 className="modal"
             >
-                <button className="closeButton" onClick={closeModalHandler}>Close</button>
-                <br></br>
-                <br></br>
-                <br></br>
-                <div className="modalNav">
-                    <button className="editButton" onClick={() => handlePage("recipe")}>Recipe</button>
-                    <button className="editButton" onClick={() => handlePage("steps")}>Steps</button>
-                    <button className="editButton" onClick={() => handlePage("reviews")}>Reviews</button>
-
-                </div>
+                <ModalNav closeModalHandler={closeModalHandler} handlePage={handlePage} />
                 <>
                     {
                         page === "recipe" ? (
                             <>
                                 {edit ? (
                                     <form className="viewTable" onSubmit={handleSubmit}>
-                                        <EditRecipe setIngredients={setIngredients} ingredients={ingredients} recipe={recipe} meal={meal} setMeal={setMeal} pic={pic} setPic={setPic} name={name} setName={setName} description={description} setDescription={setDescription} calories={calories} setCalories={setCalories} prep={prep} setPrep={setPrep} steps={steps} setSteps={setSteps} />
+                                        <EditRecipe setIngredients={setIngredients} ingredients={ingredients} recipe={recipe} meal={meal} setMeal={setMeal} pic={pic} setPic={setPic} name={name} setName={setName} description={description} setDescription={setDescription} calories={calories} setCalories={setCalories} prep={prep} setPrep={setPrep} steps={steps} setSteps={setSteps} errors={errors}/>
                                         <br></br>
                                     </form>
                                 ) : (
@@ -277,7 +287,8 @@ function RecipeCard({ recipe, updatedRecipes }) {
                                                                 </>
                                                                 :
                                                                 <>
-                                                                    <b>Created by: </b> <button className="editButton" onClick={handleFollow}>Follow {recipe.user_id}</button>
+                                                                    <Errors errors={errors} />
+                                                                    <b>Created by: </b> <button className="editButton" onClick={handleFollow}>Follow {recipe.user.username}</button>
                                                                 </>
                                                             }
                                                         </td>
@@ -406,6 +417,7 @@ function RecipeCard({ recipe, updatedRecipes }) {
                                             />
                                             <input className="editButton" type="submit" />
                                         </form>
+                                        <Errors errors={errors} />
                                     </>
                                 ) : (
                                     <></>

@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
         if review.valid?
             render json: review
         else
-            render json: { error: "error" }, status: :unprocessable_entity
+            render json: { errors: [ review.errors.full_messages ] }, status: :unprocessable_entity
         end
     end
 

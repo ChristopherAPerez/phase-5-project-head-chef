@@ -1,18 +1,19 @@
 import React, { useState, useContext } from "react";
+
+import Errors from "./Errors";
 import EditIngredients from "./EditIngredients";
+
 import { UserContext } from '../../components/App';
 
 
-function EditRecipe({ setIngredients, ingredients, recipe, pic, setPic, description, setDescription, calories, setCalories, prep, setPrep }) {
+function EditRecipe({ setIngredients, ingredients, recipe, pic, setPic, description, setDescription, calories, setCalories, prep, setPrep, errors }) {
 
     const { user } = useContext(UserContext)
 
     const [addNewIngredient, setAddNewIngredient] = useState("")
 
     function handleAddNewIngredient() {
-
         const updateIngredients = [...ingredients, addNewIngredient]
-
         fetch(`recipes/${recipe.id}`, {
             method: "PATCH",
             headers: {
@@ -22,7 +23,6 @@ function EditRecipe({ setIngredients, ingredients, recipe, pic, setPic, descript
                 ingredients: updateIngredients
             }),
         })
-
             .then((r) => {
                 if (r.ok) {
                     r.json().then((update) => {
@@ -39,6 +39,7 @@ function EditRecipe({ setIngredients, ingredients, recipe, pic, setPic, descript
 
     return (
         <>
+            <Errors errors={errors} />
             <table className="tableDeetsLeft">
                 <tbody>
                     <tr>

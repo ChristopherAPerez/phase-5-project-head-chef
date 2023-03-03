@@ -8,7 +8,7 @@ class MenuToRecipesController < ApplicationController
             menu_to_recipes.create(menu_to_recipe_params)
             render json: menu_to_recipes
         else
-            render json: { errors: "Can't have more than 3 elements" }, status: :unprocessable_entity
+            render json: { error: "Can't have more than 3 meals!" }, status: :unprocessable_entity
         end
     end
 
