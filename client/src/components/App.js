@@ -6,9 +6,9 @@ import NavRectangle from "./NavRectangle"
 
 // import Menus from "../pages/Menus"
 // import Recipes from "../pages/Recipes"
-// import Profile from "../pages/Profile"
 // import Stats from "../pages/Stats"
 // import FriendsList from "../pages/FriendsList"
+import Profile from "../pages/Profile"
 
 import LoggedOut from "./LoggedOut"
 import LoginForm from "./LoginForm"
@@ -122,9 +122,9 @@ function App() {
                       <Route path="/my_recipes" element={<MyRecipeList />}>
                       </Route>
                       <Route path="/stats" element={<Stats />}>
-                      </Route>
-                      <Route path="/profile" element={<Profile />}>
                       </Route> */}
+                      <Route path="/profile" element={<Profile />}>
+                      </Route>
                       <Route path="/" element={<NavRectangle />}>
                       </Route>
                     </Routes>
