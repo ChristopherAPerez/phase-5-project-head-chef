@@ -63,3 +63,522 @@
 }
 
 /* Components and Pages CSS */
+
+.addIngredient{
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid black;
+  background-color: lightblue;
+  padding: 5px;
+}
+
+.addRecipeForm{
+  width: 400px;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.addStep{
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid black;
+  background-color: lightblue;
+  padding: 5px;
+}
+
+.button {
+  --b: 3px;
+  /* border thickness */
+  --s: .45em;
+  /* size of the corner */
+  --color: black;
+
+  padding: calc(.5em + var(--s)) calc(.9em + var(--s));
+  color: var(--color);
+  --_p: var(--s);
+  background:
+    conic-gradient(from 90deg at var(--b) var(--b), #ffc0cb 90deg, var(--color) 0) var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+  transition: .3s linear, color 0s, background-color 0s;
+  font-size: 16px;
+
+  border: 0;
+
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button:hover,
+.button:focus-visible,
+.closeButton:hover,
+.button:focus-visible {
+  --_p: 0px;
+  outline-offset: .05em;
+  color: yellow;
+}
+
+.button:active,
+.closeButton:active {
+  background: rgb(255, 192, 203);
+  color: #fff;
+}
+
+.closeButton,
+.editButton {
+  --b: 3px;
+  /* border thickness */
+  --s: .45em;
+  /* size of the corner */
+  --color: black;
+
+  padding: calc(.5em + var(--s)) calc(.9em + var(--s));
+  color: var(--color);
+  --_p: var(--s);
+  background:
+    conic-gradient(from 90deg at var(--b) var(--b), lightblue 90deg, var(--color) 0) var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+  transition: .3s linear, color 0s, background-color 0s;
+  font-size: 16px;
+
+  border: 0;
+
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.editButton:hover {
+  --_p: 0px;
+  outline-offset: .05em;
+  color: yellow;
+}
+
+.editButton:active {
+  background: rgb(255, 192, 203);
+  color: #fff;
+}
+
+.chartStats {
+  width: 100%;
+  font-size: 16px;
+  background-color: lightblue;
+  height: 100px;
+}
+
+.chartDoughnut {
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+  font-size: 16px;
+  background-color: lightblue;
+  height: 30px;
+}
+
+.closeButton {
+  float: right;
+}
+
+.colors {
+  display: inline-block;
+  padding: 10px;
+}
+
+.currentMenu {
+  border: 3px solid #000000;
+  border-radius: 3px;
+  width: 406px;
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: separate;
+}
+
+.currentMenuBody {
+  background-color: lightblue;
+}
+
+.deets {
+  border: 2px solid #000000;
+}
+
+.egg {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 326px;
+  height: 380px;
+  background-color: pink;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+}
+
+.eggRecipesList{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 326px;
+  height: 380px;
+  background-color: lightblue;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+}
+
+.friendContainer {
+  text-align: left;
+  width: 450px;
+  min-height: 350px;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: pink;
+  border: 3px solid black;
+  padding: 3px;
+}
+
+.myRecipeContainer{
+  width: 450px;
+  min-height: 350px;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: pink;
+  border: 3px solid black;
+  padding: 3px;
+}
+
+.friendMenuTable {
+  width: 300px;
+  float: right;
+  text-align: left;
+  background-color: lightblue;
+  border: 1px solid black;
+}
+
+.friendTable {
+  width: 150px;
+  float: left;
+  border-collapse: separate;
+}
+
+.friendTabletd {
+  width: 100px;
+  background-color: #add8e6;
+  border: 1px solid black;
+  text-align: left;
+}
+
+.myRecipeTabletd {
+  font-size: 15px;
+  background-color: #add8e6;
+  border: 1px solid black;
+  text-align: left;
+}
+
+.myRecipeMenusTabletd{
+  width: 400px;
+  background-color: #add8e6;
+  border: 1px solid black;
+  text-align: left;
+}
+
+.indent {
+  text-indent: 2em
+}
+
+
+.ingredientsTable{
+  width: 500px;
+}
+
+.latestMenuTable{
+  background-color: #add8e6;
+}
+
+.listofMenus{
+  max-height: 295px;
+  overflow: scroll;
+  border: 1px solid black;
+}
+
+.listofMenus::-webkit-scrollbar {
+  display: none;
+}
+
+.logo {
+  width: 200px;
+  height: 150px;
+}
+
+.mealCardImage{
+  border: 1px solid black;
+}
+
+.navlink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: auto;
+  margin-right: auto;
+  width: 55px;
+  height: 55px;
+}
+
+.navlink:hover {
+  background-color: #fbbbc3;
+  color: yellow;
+}
+
+.newRecipeForm{
+  width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: pink;
+  border: 3px solid black;
+}
+
+.profilePic {
+  background-color: lightblue;
+  border: 1px solid black;
+}
+
+.profileTable {
+  background-color: #ffc0cb;
+  margin-left: auto;
+  margin-right: auto;
+  width: 470px;
+  height: 350px;
+  border: 3px solid black;
+  border-radius: 10px;
+}
+
+.slot {
+  float: left;
+  border: 1px solid black;
+  background-color: #fbbbc3;
+}
+
+.slotLink {
+  float: left;
+  border: 1px solid black;
+  background-color: #fbbbc3;
+}
+
+.slot:hover {
+  cursor: default;
+  background-color: #fbbbc3;
+}
+
+.slotLink:hover {
+  cursor: pointer;
+  background-color: #fbbbc3;
+  color: yellow;
+}
+
+.recipeImage {
+  border: 1px solid black;
+}
+
+.recipeTable {
+  background-color: #fbbbc3;
+  font-size: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 5px;
+
+  border-collapse: separate;
+
+  width: 90%;
+  border: 5px solid black;
+  border-radius: 5px;
+}
+
+.recipeTableTwo {
+  background-color: #fbbbc3;
+  font-size: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 5px;
+
+  border-collapse: collapse;
+
+  width: 95%;
+}
+
+.recipeTableDiv {
+  background-color: #fbbbc3;
+  font-size: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+
+  border-collapse: separate;
+
+  width: 90%;
+  border: 5px solid black;
+  border-radius: 5px;
+
+  padding: 5px;
+}
+
+.recipeText{
+  text-align: left;
+  width: 450px;
+}
+
+/* table tbody {
+  border: 10px solid black;
+}
+
+table tr {
+  border: 1px solid black;
+}
+
+table td {
+  border: 1px solid black;
+} */
+
+.rectangle {
+  width: 400px;
+  max-height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.navTable {
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid Pink;
+  border-collapse: collapse;
+}
+
+.tableDown {
+  border: 3px solid black;
+  background-color: #fbbbc3;
+}
+
+.loggedOut{
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 3px dotted black;
+  background-color: #fbbbc3;
+}
+
+.loginForm{
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 3px dotted black;
+  background-color: #fbbbc3;
+  padding-bottom: 10px;
+}
+
+.signupForm{
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 3px dotted black;
+  background-color: #fbbbc3;
+  padding-bottom: 10px;
+}
+
+.tableDown:hover {
+  cursor: pointer;
+  background-color: #fbbbc3;
+  color: yellow;
+}
+
+.menuHistoryTable {
+  background-color: #fbbbc3;
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
+  border: 3px solid black;
+  border-collapse: collapse;
+}
+
+.menuHistorySlot {
+  border: 3px solid black;
+}
+
+.modal {
+  background: Pink;
+  margin: -10px;
+}
+
+.modalNav {
+  margin-left: auto;
+  margin-right: auto;
+  width: 350px;
+}
+
+Modal.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+Modal.content {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  right: 40px;
+  bottom: 40px;
+  border: 1px solid #000000;
+  background: #160101;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 4px;
+  outline: none;
+  padding: 20px;
+}
+
+.ReactModal__Content--after-open {
+  font-family: "Papyrus";
+  position: absolute;
+  inset: 40px;
+  border: 10px solid black;
+  border-radius: 5px;
+  background: pink;
+  overflow: auto;
+  border-radius: 4px;
+  outline: none;
+  padding: 20px;
+}
+
+.ReactModal__Content--after-open::-webkit-scrollbar {
+  display: none;
+}
+
+.reviewTable{
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 3px solid black;
+  border-radius: 3px;
+  background-color: lightblue;
+
+  border-collapse: separate;
+}
+
+.viewTable{
+  text-align: left;
+  width: 930px
+}
+
+.tableDeetsLeft{
+  float: left;
+}
+
+.tableDeetsRight{
+float: right;
+width: 600px;
+}
