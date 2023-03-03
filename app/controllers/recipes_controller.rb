@@ -31,6 +31,7 @@ class RecipesController < ApplicationController
     end
 
     def destroy
+<<<<<<< HEAD
         menus = Menu.all
         if menus.exists?(publish: false)
             unpublish_menu = Menu.find_by(publish: false)
@@ -44,6 +45,14 @@ class RecipesController < ApplicationController
         else
             recipe = Recipe.find_by(id: params[:id])
             recipe.destroy
+=======
+        unpublish_menu = Menu.find_by(publish: false)
+        delete_recipe = Recipe.find_by(id: params[:id])
+        if unpublish_menu.recipes.exists?(id: delete_recipe.id)
+            render json: { errors: ["Recipe currently exists in your menu!"] }, status: :unauthorized
+        else
+            delete_recipe.destroy
+>>>>>>> b42528944426a688545b343c8f13f4be738bda5a
             head :no_content
         end
     end

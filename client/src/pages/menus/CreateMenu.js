@@ -87,7 +87,13 @@ function CreateMenu() {
 
     function sendMenu() {
         publishMenu()
+<<<<<<< HEAD
         sendSms()
+=======
+        // setTimeout(() => {
+        //     sendSms()
+        // }, 3000);
+>>>>>>> b42528944426a688545b343c8f13f4be738bda5a
         setPhoneNumber('')
     }
 
