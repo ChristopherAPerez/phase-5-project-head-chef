@@ -38,8 +38,8 @@ function NavRectangle() {
                 <table className="navTable" >
                     <tbody>
                         <tr>
-                            <td className="tableDown" onClick={() => handleNavigation("/menus")}>
-                                <NavLink className="navlink" to="/menus" style={linkStyle}>
+                            <td className="tableDown" onClick={() => handleNavigation("/menu")}>
+                                <NavLink className="navlink" to="/menu" style={linkStyle}>
                                     <img
                                         src={menu}
                                         alt={menu}

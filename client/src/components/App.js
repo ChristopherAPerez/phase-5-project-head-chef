@@ -4,8 +4,9 @@ import { Routes, Route } from "react-router-dom";
 import Header from "./Header"
 import NavRectangle from "./NavRectangle"
 
-// import Menus from "../pages/Menus"
-// import Recipes from "../pages/Recipes"
+import Menu from "../pages/menus/CreateMenu"
+import MenuHistory from "../pages/menus/MenuHistory";
+import Recipes from "../pages/recipe/Recipes"
 import Stats from "../pages/stats/Stats"
 import Friends from "../pages/friends/Friends"
 import Profile from "../pages/profile/Profile"
@@ -39,16 +40,16 @@ function App() {
 
 
   useEffect(() => {
-      fetch("/me").then((r) => {
-        if (r.ok) {
-          r.json().then((user) => {
-            setUser(user)
-            setFriends(user.friends)
-            setMyRecipes(user.recipes)
-            setLoading(false)
-          })
-        }
-      });
+    fetch("/me").then((r) => {
+      if (r.ok) {
+        r.json().then((user) => {
+          setUser(user)
+          setFriends(user.friends)
+          setMyRecipes(user.recipes)
+          setLoading(false)
+        })
+      }
+    });
   }, []);
 
   useEffect(() => {
@@ -72,6 +73,27 @@ function App() {
       }
     });
   }, []);
+
+  ////////// Recipes //////////
+
+  const [allRecipes, setAllRecipes] = useState([])
+
+  useEffect(() => {
+    fetch("/recipes").then((r) => {
+      if (r.ok) {
+        r.json().then((recipes) => {
+          setAllRecipes(recipes)
+        })
+      }
+    });
+  }, []);
+
+  function deleteRecipe(id) {
+    const updatedRecipes = allRecipes.filter((recipe) => recipe.id !== id);
+    setAllRecipes(updatedRecipes);
+  }
+
+  ////////////
 
   function updatedMyRecipes(update) {
     const updatedMyRecipes = myRecipes.map((recipe) => {
@@ -105,29 +127,32 @@ function App() {
             </>
           ) : (
             <>
-              <UserContext.Provider value={{ user, setUser, friends, setFriends }}>
-                  <Header />
-              </UserContext.Provider>
-              <br></br>
               <UserContext.Provider value={{ user, setUser, setLoading, stats, setStats, friends, setFriends, myRecipes, setMyRecipes, deleteMyRecipe, updatedMyRecipes }}>
                 <MenuContext.Provider value={{ menus, setMenus }} >
                   <PublishContext.Provider value={{ unpublish, setUnPublish, unpublishRecipes, setUnPublishRecipes, unpublishMenuToRecipes, setUnpublishMenuToRecipes }} >
-                    <Routes>
-                      {/* <Route path="/menus" element={<Menus />}>
+                    
+                      <Header />
+                      <Routes>
+                        <Route path="/menu" element={<Menu />}>
+                        </Route>
+                        <Route path="/menu_history" element={<MenuHistory />}>
+                        </Route>
+                        <Route path="/friends" element={<Friends />}>
+                        </Route>
+                        {/* <Route path="/my_recipes" element={<MyRecipes />}>
                       </Route> */}
-                      <Route path="/friends" element={<Friends />}>
-                      </Route>
-                      {/* <Route path="/recipes" element={<Recipes />}>
-                      </Route>
-                      <Route path="/my_recipes" element={<MyRecipeList />}>
+                        <Route path="/recipes" element={<Recipes />}>
+                        </Route>
+                        {/* <Route path="/create_recipe" element={<CreateRecipe />}>
                       </Route> */}
-                      <Route path="/stats" element={<Stats />}>
-                      </Route>
-                      <Route path="/profile" element={<Profile />}>
-                      </Route>
-                      <Route path="/" element={<NavRectangle />}>
-                      </Route>
-                    </Routes>
+                        <Route path="/stats" element={<Stats />}>
+                        </Route>
+                        <Route path="/profile" element={<Profile />}>
+                        </Route>
+                        <Route path="/" element={<NavRectangle />}>
+                        </Route>
+                      </Routes>
+                    
                   </PublishContext.Provider>
                 </MenuContext.Provider>
               </UserContext.Provider>
