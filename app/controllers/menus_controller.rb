@@ -79,9 +79,9 @@ class MenusController < ApplicationController
         menu_to_recipes.each do |menu_to_recipe|
             menu_to_recipe.destroy
         end
-        recipes.each do |recipe|
-            recipe.destroy
-        end
+        # recipes.each do |recipe|
+        #     recipe.destroy
+        # end
         render json: menu, include: ['menu_to_recipes', 'recipes']
     end
 

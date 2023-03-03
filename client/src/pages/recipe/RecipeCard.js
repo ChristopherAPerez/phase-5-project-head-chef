@@ -367,6 +367,7 @@ function RecipeCard({ recipe, updatedRecipes }) {
                                                 autoComplete="off"
                                                 value={addNewStep}
                                                 onChange={(e) => setAddNewStep(e.target.value)}
+                                                rows="10" cols="100"
                                             />
                                             <br></br>
                                             {

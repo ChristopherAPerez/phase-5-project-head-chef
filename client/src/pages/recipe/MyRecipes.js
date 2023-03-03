@@ -34,7 +34,7 @@ function MyRecipes() {
                         })}
                     </tbody>
                 </table>
-                <table>
+                <table className="listofMenusTitle">
                     <tbody>
                         <tr >
                             <td>

@@ -84,11 +84,11 @@ function CreateMenu() {
     }
 
     function sendMenu() {
-        // sendSms()
+        publishMenu()
+        // setTimeout(() => {
+        //     sendSms()
+        // }, 3000);
         setPhoneNumber('')
-        setTimeout(() => {
-            publishMenu()
-        }, 3000);
     }
 
     return (
