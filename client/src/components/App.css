@@ -260,7 +260,6 @@
   float: right;
   text-align: left;
   background-color: lightblue;
-  border: 1px solid black;
 }
 
 .friendTable {
@@ -306,7 +305,6 @@
 .listofMenus{
   max-height: 295px;
   overflow: scroll;
-  border: 1px solid black;
 }
 
 .listofMenus::-webkit-scrollbar {

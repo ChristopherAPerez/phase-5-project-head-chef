@@ -1,5 +1,8 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom"
+
+import Errors from "./Errors";
+
 import { UserContext } from './App';
 
 function LoginForm() {
@@ -8,6 +11,7 @@ function LoginForm() {
   const navigate = useNavigate()
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState([])
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -27,14 +31,16 @@ function LoginForm() {
           setTimeout(() => {
             setLoading(false)
           }, 3000);
+          navigate("/")
         })
       } else {
         r.json().then((err) => {
-            alert(err.errors)
+            setErrors(err.errors)
+            setUsername("")
+            setPassword("")
         })
     }
     });
-    navigate("/")
   }
 
   return (
@@ -61,6 +67,7 @@ function LoginForm() {
         <br></br>
         <button className="editButton" type="submit">Login</button>
       </form> 
+      <Errors errors={errors}/>
     </div>
   );
 }

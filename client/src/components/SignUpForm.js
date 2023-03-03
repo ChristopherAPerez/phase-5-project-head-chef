@@ -1,5 +1,8 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom"
+
+import Errors from "./Errors";
+
 import { UserContext } from './App';
 
 function SignUpForm() {
@@ -9,8 +12,10 @@ function SignUpForm() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
+    const [errors, setErrors] = useState([])
 
     function handleSubmit(e) {
+        e.preventDefault();
         fetch("/users", {
             method: "POST",
             headers: {
@@ -21,7 +26,7 @@ function SignUpForm() {
                 password,
                 password_confirmation: passwordConfirmation,
                 bio: "",
-                profile_pic: ""
+                profile_pic: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJQxsk8FXtaFHxBhj0fD0VQSLWLy5ZQ2gZEg&usqp=CAU"
             }),
         }).then((r) => {
             if (r.ok) {
@@ -33,14 +38,17 @@ function SignUpForm() {
                     setTimeout(() => {
                         setLoading(false)
                     }, 3000);
+                    navigate("/")
                 })
             } else {
                 r.json().then((err) => {
-                    alert(err.errors)
+                    setErrors(err.errors)
+                    setUsername("")
+                    setPassword("")
+                    setPasswordConfirmation("")
                 })
             }
         });
-        navigate("/")
     }
 
     return (
@@ -72,6 +80,7 @@ function SignUpForm() {
                 />
                 <button className="editButton" type="submit">Sign Up</button>
             </form>
+            <Errors errors={errors} />
         </div>
     );
 }

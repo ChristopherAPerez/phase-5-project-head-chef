@@ -3,6 +3,7 @@ import React from 'react';
 import DataCard from './DataCard'
 
 function PieChartData( { trigger, stats } ) {
+
     
     return (
         <>
