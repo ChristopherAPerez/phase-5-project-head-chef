@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
-import { RecipeContext } from "./Recipes";
+
+import { RecipeContext } from '../../components/App';
 
 function DiscoverBar() {
 

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import RecipeCard from './RecipeCard';
 
-import { RecipeContext } from "./Recipes";
+import { RecipeContext } from '../../components/App';
 
 function AllRecipeList() {
 

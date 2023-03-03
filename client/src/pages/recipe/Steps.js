@@ -6,7 +6,7 @@ function Steps({ recipe, step, index, steps, setSteps }) {
     const { user } = useContext(UserContext)
 
     const [edit, setEdit] = useState(false)
-    const [newStep, setNewStep] = useState("")
+    const [newStep, setNewStep] = useState(step)
 
     function handleEdit() {
         console.log(step)
@@ -14,10 +14,8 @@ function Steps({ recipe, step, index, steps, setSteps }) {
     }
 
     function handleSave() {
-
         const updateStep = [...steps]
         updateStep[index] = steps[index].replace(step, newStep)
-
         fetch(`recipes/${recipe.id}`, {
             method: "PATCH",
             headers: {
@@ -27,7 +25,6 @@ function Steps({ recipe, step, index, steps, setSteps }) {
                 steps: updateStep
             }),
         })
-
             .then((r) => {
                 if (r.ok) {
                     r.json().then((update) => {
@@ -36,11 +33,10 @@ function Steps({ recipe, step, index, steps, setSteps }) {
                     });
                 } else {
                     r.json().then((err) => {
-                        alert(err.error)
+                        console.log(err)
                     })
                 }
             })
-
     }
 
     return (

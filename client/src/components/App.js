@@ -8,6 +8,7 @@ import Menu from "../pages/menus/CreateMenu"
 import MenuHistory from "../pages/menus/MenuHistory";
 import MyRecipes from "../pages/recipe/MyRecipes";
 import Recipes from "../pages/recipe/Recipes"
+import CreateRecipe from "../pages/recipe/CreateRecipeForm";
 import Stats from "../pages/stats/Stats"
 import Friends from "../pages/friends/Friends"
 import Profile from "../pages/profile/Profile"
@@ -23,6 +24,7 @@ import './App.css';
 export const UserContext = createContext();
 export const MenuContext = createContext();
 export const PublishContext = createContext();
+export const RecipeContext = createContext();
 
 function App() {
 
@@ -130,7 +132,7 @@ function App() {
               <UserContext.Provider value={{ user, setUser, setLoading, stats, setStats, friends, setFriends, myRecipes, setMyRecipes, deleteMyRecipe, updatedMyRecipes }}>
                 <MenuContext.Provider value={{ menus, setMenus }} >
                   <PublishContext.Provider value={{ unpublish, setUnPublish, unpublishRecipes, setUnPublishRecipes, unpublishMenuToRecipes, setUnpublishMenuToRecipes }} >
-                    
+                    <RecipeContext.Provider value={{ allRecipes, setAllRecipes, deleteRecipe }}>
                       <Header />
                       <Routes>
                         <Route path="/menu" element={<Menu />}>
@@ -140,11 +142,11 @@ function App() {
                         <Route path="/friends" element={<Friends />}>
                         </Route>
                         <Route path="/my_recipes" element={<MyRecipes />}>
-                      </Route>
+                        </Route>
                         <Route path="/recipes" element={<Recipes />}>
                         </Route>
-                        {/* <Route path="/create_recipe" element={<CreateRecipe />}>
-                      </Route> */}
+                        <Route path="/create_recipe" element={<CreateRecipe />}>
+                      </Route>
                         <Route path="/stats" element={<Stats />}>
                         </Route>
                         <Route path="/profile" element={<Profile />}>
@@ -152,7 +154,7 @@ function App() {
                         <Route path="/" element={<NavRectangle />}>
                         </Route>
                       </Routes>
-                    
+                    </RecipeContext.Provider>
                   </PublishContext.Provider>
                 </MenuContext.Provider>
               </UserContext.Provider>

@@ -26,7 +26,7 @@ function CurrentMenu() {
         <table className='currentMenu'>
             <tbody >
                 <tr>
-                    <td className='slotLink' onClick={() => handleNavigation("/menus")}>
+                    <td className='slotLink' onClick={() => handleNavigation("/menu")}>
                         <NavLink className="navlink" to="/menus" style={linkStyle}>
                             <img
                                 src={hovered ? menuGif : menu}

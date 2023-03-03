@@ -1,15 +1,15 @@
-import React, { useState, useEffect, createContext } from "react";
+import React, { useEffect, useContext } from "react";
 
 import RecipeBar from "./RecipeBar";
 import CurrentMenu from "./CurrentMenu";
 import DiscoverBar from './DiscoverBar';
 import RecipeList from './RecipeList';
 
-export const RecipeContext = createContext();
+import { RecipeContext } from '../../components/App';
 
 function Recipes() {
 
-    const [allRecipes, setAllRecipes] = useState([])
+    const { allRecipes, setAllRecipes } = useContext(RecipeContext)
 
     useEffect(() => {
         window.scrollTo(0, 0);

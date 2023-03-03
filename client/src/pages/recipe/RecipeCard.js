@@ -1,14 +1,12 @@
 import React, { useContext, useState } from "react";
-import { UserContext } from '../../components/App';
-import { PublishContext } from '../../components/App';
-import { RecipeContext } from "./Recipes";
 
 import EditRecipe from "./EditRecipe";
-
 import Ingredients from './Ingredients'
 import Steps from "./Steps";
 
-
+import { UserContext } from '../../components/App';
+import { PublishContext } from '../../components/App';
+import { RecipeContext } from '../../components/App';
 
 import ReactModal from 'react-modal';
 import ReviewCard from "./ReviewCard";
