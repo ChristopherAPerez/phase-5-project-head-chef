@@ -1,17 +1,16 @@
 import React, { useState, useContext } from "react";
-import chef1 from './src/images/CHEF PROFILE 2.PNG';
-import chef2 from './src/images/CHEF PROFILE 3.PNG';
-import chef3 from './src/images/CHEF PROFILE 4.PNG';
-import chef4 from './src/images/CHEF PROFILE 5.PNG';
-import chef5 from './src/images/CHEF PROFILE 6.PNG';
-import chef6 from './src/images/CHEF PROFILE 7.PNG';
-import chef7 from './src/images/CHEF PROFILE 8.PNG';
-import chef8 from './src/images/CHEF PROFILE 9.PNG';
+import chef1 from '../../images/CHEF PROFILE 2.PNG';
+import chef2 from '../../images/CHEF PROFILE 3.PNG';
+import chef3 from '../../images/CHEF PROFILE 4.PNG';
+import chef4 from '../../images/CHEF PROFILE 5.PNG';
+import chef5 from '../../images/CHEF PROFILE 6.PNG';
+import chef6 from '../../images/CHEF PROFILE 7.PNG';
+import chef7 from '../../images/CHEF PROFILE 8.PNG';
+import chef8 from '../../images/CHEF PROFILE 9.PNG';
 
-import { UserContext } from './src/components/App.js';
+import { UserContext } from "../../components/App";
 
-function EditProfile({ isEditing, setIsEditing }) {
-
+function EditProfile( { isEditing, setIsEditing } ) {
 
     const { user, setUser } = useContext(UserContext)
 

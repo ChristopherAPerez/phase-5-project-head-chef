@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
-import { UserContext } from './components/App';
 
-function ProfileTable() {
+import { UserContext } from "../../components/App";
+
+function ProfileTable( { isEditing, setIsEditing } ) {
 
     const { user } = useContext(UserContext)
 
