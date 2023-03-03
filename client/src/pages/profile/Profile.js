@@ -20,6 +20,7 @@ function Profile() {
 
     return (
         <>
+            <br></br>
             <button className="button" onClick={handleMainMenu}>Main Menu</button>
             <br></br>
             <br></br>
