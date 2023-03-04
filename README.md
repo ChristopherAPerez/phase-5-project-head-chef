@@ -5,11 +5,11 @@
 
 **LINK:** https://github.com/ChristopherAPerez/phase-5-project-head-chef
 
-**LIVE LINK:** https://youtu.be/4_MRikkPdV4
+**LIVE LINK:** 
 
 ### Model:
 
-![](client/src/images/project_model.jpeg)
+![](client/src/images/Project Model.png)
 
 ## Requirements
 
