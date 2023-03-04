@@ -133,7 +133,7 @@ You can sign up for a free account at [https://www.twilio.com/try-twilio][twilio
 
 [twilio signup]: https://www.twilio.com/try-twilio
 
-Once you've completed the signup process, you will be taken to your Twilio Account info, where you will have access to your personal Account SID, Auth Token, and Twilio phone number. Be sure you verify the number you wish to use for Head-Chef. When using the application, be sure to add your SID and Auth Token to the code for it to work and only use a valid phone number asscociated with Twilio. 
+Once you've completed the signup process, you will be taken to your Twilio Account info, where you will have access to your personal Account SID, Auth Token, and Twilio phone number. Be sure you verify the number you wish to use for Head-Chef. When using the application, be sure to add your SID and Auth Token to the code for it to work and only use a valid phone number associated with Twilio. 
 
 ## Resources
 
