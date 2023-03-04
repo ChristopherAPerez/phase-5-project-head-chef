@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+
 import chef1 from '../../images/CHEF PROFILE 2.PNG';
 import chef2 from '../../images/CHEF PROFILE 3.PNG';
 import chef3 from '../../images/CHEF PROFILE 4.PNG';
@@ -8,6 +9,8 @@ import chef6 from '../../images/CHEF PROFILE 7.PNG';
 import chef7 from '../../images/CHEF PROFILE 8.PNG';
 import chef8 from '../../images/CHEF PROFILE 9.PNG';
 
+import Errors from "./Errors";
+
 import { UserContext } from "../../components/App";
 
 function EditProfile( { isEditing, setIsEditing } ) {
@@ -16,8 +19,8 @@ function EditProfile( { isEditing, setIsEditing } ) {
 
     const [username, setUsername] = useState(user.username);
     const [bio, setBio] = useState(user.bio);
-
     const [pic, setPic] = useState(user.profile_pic);
+    const [errors, setErrors] = useState([])
 
     const pic_collection = [chef1, chef2, chef3, chef4, chef5, chef6, chef7, chef8]
 
@@ -44,8 +47,7 @@ function EditProfile( { isEditing, setIsEditing } ) {
                     });
                 } else {
                     r.json().then((err) => {
-                        alert(err.error)
-                        setIsEditing(!isEditing)
+                        setErrors(err.errors)
                     })
                 }
             })
@@ -76,6 +78,8 @@ function EditProfile( { isEditing, setIsEditing } ) {
                                 value={username}
                                 onChange={(e) => setUsername(e.target.value)}
                             />
+                            <b></b>
+                            <Errors errors={errors}/>
                             <p><b>About Me: </b></p><textarea
                                 type="textarea"
                                 name=""

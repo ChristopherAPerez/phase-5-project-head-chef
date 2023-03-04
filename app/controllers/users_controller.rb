@@ -26,7 +26,7 @@ class UsersController < ApplicationController
         if user.valid?
             render json: user, include: ['friends', 'menus', 'recipes'], status: :accepted
         else
-            render json: { error: "error" }, status: :unprocessable_entity
+            render json: { errors: [ user.errors.full_messages ] }, status: :unprocessable_entity
         end
     end
 
