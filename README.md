@@ -85,5 +85,17 @@ point.
 
 ## Resources
 
-- [Getting Started with Ruby on Rails on Render](https://render.com/docs/deploy-rails)
-- [Render Databases Guide](https://render.com/docs/databases)
+- [create-react-app][]
+- [dbdiagram.io][]
+- [Postman][postman download]
+- [react-modal][]
+- [react-chartjs-2][]
+- [twilio][]
+
+[create-react-app]: https://create-react-app.dev/docs/getting-started
+[create repo]: https://docs.github.com/en/get-started/quickstart/create-a-repo
+[dbdiagram.io]: https://dbdiagram.io/
+[postman download]: https://www.postman.com/downloads/
+[react-modal]: https://www.npmjs.com/package/react-modal
+[react-chartjs-2]: https://react-chartjs-2.js.org/
+[twilio]: https://www.twilio.com/try-twilio
