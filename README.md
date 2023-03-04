@@ -9,7 +9,7 @@
 
 ### Model:
 
-![](client/src/images/Project Model.png)
+![](client/src/images/Project_Model.png)
 
 ## Requirements
 
