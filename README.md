@@ -65,23 +65,11 @@ npm i -g npm
 
 ### Set Up a Twilio Account
 
-You can sign up for a free account at
-[https://dashboard.render.com/register][Render signup]. We recommend that you
-sign up using GitHub as that will make it a little easier for you to connect
-Render to your GitHub account. The instructions below assume you've done that.
+You can sign up for a free account at [https://www.twilio.com/try-twilio][twilio signup].
 
-[Render signup]: https://dashboard.render.com/register
+[twilio signup]: https://www.twilio.com/try-twilio
 
-Once you've completed the signup process, you will be taken to the Render
-dashboard. In order to connect Render to your GitHub account, you'll need to
-click the "New Web Service" button in the "Web Services" box. On the next page,
-you will see a GitHub heading on the right side and below that a link labeled
-"Connect account". (If you didn't sign up using GitHub, it will say "Connect
-account" instead.) Click that link, then in the modal that appears click
-"Install." You should then be taken back to the "Create a New Web Service" page,
-which should now show a list of your GitHub repos. We won't actually create a
-web service just yet so you are free to navigate away from the page at this
-point.
+Once you've completed the signup process, you will be taken to your Twilio Account info, where you will have access to your personal Account SID, Auth Token, and Twilio phone number. Be sure you verify the number you wish to use for Head-Chef.
 
 ## Resources
 
