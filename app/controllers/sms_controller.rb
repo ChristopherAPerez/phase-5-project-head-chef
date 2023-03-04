@@ -15,14 +15,21 @@ class SmsController < ApplicationController
             @client = Twilio::REST::Client.new(account_sid, auth_token)
             @client.messages.create(
             from: '18883505894',
-            to: '',
+            to: number,
             body: "┎┈┈┈┈┈┈┈୨♡୧┈┈┈┈┈┈┈┒
-                         #{breakfast.recipe_name}, 
-                         #{breakfast.description}, 
-                         #{lunch.recipe_name}, 
-                        #{lunch.description}, 
-                        #{dinner.recipe_name}, 
-                        #{dinner.description}
+
+    Breakfast
+    #{breakfast.recipe_name}, 
+    #{breakfast.description}, 
+
+    Lunch
+    #{lunch.recipe_name}, 
+    #{lunch.description}, 
+
+    Dinner
+    #{dinner.recipe_name}, 
+    #{dinner.description}
+    
     ┖┈┈┈┈┈┈┈୨♡୧┈┈┈┈┈┈┈┚"
             )
             render json: { message: 'SMS sent successfully' }

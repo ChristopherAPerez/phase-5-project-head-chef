@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"
 
+import RecipeBar from "./RecipeBar";
 import RecipeInputs from "./RecipeInputs";
 import AddIngredients from "./AddIngredients";
 import AddSteps from "./AddSteps";
@@ -82,6 +83,7 @@ function CreateRecipeForm() {
     return (
         <>
             <br></br>
+            <RecipeBar />
             <div className="newRecipeForm">
                 <h1><u>Create New Recipe!</u></h1>
                 <form className="addRecipeForm" onSubmit={handleSubmit}>

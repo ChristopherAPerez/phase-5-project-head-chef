@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom"
 
 import RecipeBar from "./RecipeBar";
 import MyRecipeCard from './MyRecipeCard';
@@ -8,7 +7,6 @@ import MyMenuCard from "./MyMenuCard";
 import { UserContext } from '../../components/App';
 
 function MyRecipes() {
-    const navigate = useNavigate()
 
     const { myRecipes } = useContext(UserContext)
 

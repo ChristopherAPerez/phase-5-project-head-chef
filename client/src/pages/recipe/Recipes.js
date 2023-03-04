@@ -23,7 +23,7 @@ function Recipes() {
                 })
             }
         });
-    }, []);
+    }, [setAllRecipes]);
 
     function deleteRecipe(id) {
         const updatedRecipes = allRecipes.filter((recipe) => recipe.id !== id);

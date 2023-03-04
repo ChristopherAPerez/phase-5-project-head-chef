@@ -1,11 +1,12 @@
 # phase-5-project-head-chef
 
 ## Description
+Welcome to Head Chef an application for the heads chefs of families and friends. Head chef allows users to create an account, browse through recipes, customize them and participate in adding to the database of recipes. Users can add friends and customize there profile. Users have access to stats to track calories and cooking time. And finally, users can build their own personal menu and send it via SMS. Head Chef is designed to serve a fun, helpful, and social experience. Enjoy!
 
 
 **LINK:** https://github.com/ChristopherAPerez/phase-5-project-head-chef
 
-**LIVE LINK:** 
+**LIVE LINK:** https://youtu.be/862rjWotNdY
 
 ### Model:
 
@@ -132,7 +133,7 @@ You can sign up for a free account at [https://www.twilio.com/try-twilio][twilio
 
 [twilio signup]: https://www.twilio.com/try-twilio
 
-Once you've completed the signup process, you will be taken to your Twilio Account info, where you will have access to your personal Account SID, Auth Token, and Twilio phone number. Be sure you verify the number you wish to use for Head-Chef.
+Once you've completed the signup process, you will be taken to your Twilio Account info, where you will have access to your personal Account SID, Auth Token, and Twilio phone number. Be sure you verify the number you wish to use for Head-Chef. When using the application, be sure to add your SID and Auth Token to the code for it to work and only use a valid phone number asscociated with Twilio. 
 
 ## Resources
 
@@ -150,3 +151,6 @@ Once you've completed the signup process, you will be taken to your Twilio Accou
 [react-modal]: https://www.npmjs.com/package/react-modal
 [react-chartjs-2]: https://react-chartjs-2.js.org/
 [twilio]: https://www.twilio.com/try-twilio
+
+## Authors and acknowledgment
+All images used in this application(with the excepton of food recipes images) were designed and created by the designer, and their family, of this app.
