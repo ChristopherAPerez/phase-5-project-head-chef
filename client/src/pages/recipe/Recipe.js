@@ -11,7 +11,7 @@ function Recipe({ unpublish, recipe, openModalHandler, handleMenu, error }) {
                     <tbody>
                         <tr >
                             <td >
-                                <p><b>{recipe.recipe_name}</b> by: Username</p>
+                                <p><b>{recipe.recipe_name}</b></p>
                             </td>
                         </tr>
                     </tbody>
