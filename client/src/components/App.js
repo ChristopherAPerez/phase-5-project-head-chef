@@ -40,6 +40,7 @@ function App() {
 
   const [stats, setStats] = useState([]);
 
+  ///////// User Login ///////////
 
   useEffect(() => {
     fetch("/me").then((r) => {
@@ -54,6 +55,10 @@ function App() {
     });
   }, []);
 
+  ////////////
+
+  ////////// Menu History //////////
+
   useEffect(() => {
     fetch("/menu_history").then((r) => {
       if (r.ok) {
@@ -63,6 +68,10 @@ function App() {
       }
     });
   }, []);
+
+  ////////////
+
+  ////////// New Menu //////////
 
   useEffect(() => {
     fetch("/unpublish_menu").then((r) => {
@@ -75,6 +84,8 @@ function App() {
       }
     });
   }, []);
+
+  ////////////
 
   ////////// Recipes //////////
 
