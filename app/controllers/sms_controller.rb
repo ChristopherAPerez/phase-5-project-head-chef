@@ -47,10 +47,4 @@ class SmsController < ApplicationController
         end       
     end
 
-    private
-
-    def recipe_params
-        params.permit(:recipe_name, :meal, :description, :calories, :prep_time, :recipe_pic, :user_id, :active, steps: [], ingredients: [])
-    end
-
 end
