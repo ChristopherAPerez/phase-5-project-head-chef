@@ -39,7 +39,7 @@ function CreateMenu() {
                     });
                 } else {
                     r.json().then((err) => {
-                        alert(err.error)
+                        alert(err.errors)
                     })
                 }
             })

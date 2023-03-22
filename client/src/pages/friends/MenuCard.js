@@ -4,8 +4,6 @@ import RecipeCard from './RecipeCard';
 
 function MenuCard({ recipes }) {
 
-    console.log(recipes)
-
     return (
         <>
             {recipes.map((recipe) => {

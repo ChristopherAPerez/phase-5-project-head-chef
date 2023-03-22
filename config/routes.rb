@@ -7,8 +7,9 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
 
-  resources :users, only: [:create, :update]
+  resources :users, only: [:update]
   get "/me", to: "users#me"
+  post "/signup", to: "users#signup"
 
   resources :menus, only: [:create, :update]
   get "/menu_history", to: "menus#menu_history"

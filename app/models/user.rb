@@ -1,6 +1,7 @@
 class User < ApplicationRecord
     has_many :inventories
     has_many :menus
+    has_many :menu_to_recipes, through: :menus
     has_many :recipes
     has_many :reviews
 

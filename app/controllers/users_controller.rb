@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
     wrap_parameters format: []
 
-    def create
+    def signup
         user = User.create(user_params)
         if user.valid?
             session[:user_id] = user.id

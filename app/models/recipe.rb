@@ -16,4 +16,5 @@ class Recipe < ApplicationRecord
 
     scope :search, -> (recipe_name){where("recipe_name LIKE ?", "%#{recipe_name}%")}
     scope :by_meal, -> (meal){where(meal: meal)}
+    
 end

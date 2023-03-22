@@ -12,38 +12,59 @@ class RecipesController < ApplicationController
     end
 
     def create
-        recipe = Recipe.create(recipe_params)
-        if recipe.valid?
-            render json: recipe, include: ['reviews', 'user']
-        else
-            render json: { errors: [ recipe.errors.full_messages ] }, status: :unprocessable_entity
+        user = User.find_by(id: session[:user_id])
+        if user
+            recipe = user.recipes.create(recipe_params)
+            if recipe.valid?
+                render json: recipe, include: ['reviews', 'user']
+            else
+                render json: { errors: [ recipe.errors.full_messages ] }, status: :unprocessable_entity
+            end
+        else 
+            render json: { errors: ["Not authorized"] }, status: :unauthorized
         end
     end
 
     def update
-        recipe = Recipe.find_by(id: params[:id])
-        recipe.update(recipe_params)
-        if recipe.valid?
-            render json: recipe, include: ['reviews', 'user'], status: :accepted
-        else
-            render json: { errors: [ recipe.errors.full_messages ] }, status: :unprocessable_entity
+        user = User.find_by(id: session[:user_id])
+        if user
+            recipe = Recipe.find_by(id: params[:id])
+            if recipe.user_id == user.id
+                recipe.update(recipe_params)
+                if recipe.valid?
+                    render json: recipe, include: ['reviews', 'user'], status: :accepted
+                else
+                    render json: { errors: [ recipe.errors.full_messages ] }, status: :unprocessable_entity
+                end
+            else
+                render json: { errors: ["Not authorized"] }, status: :unauthorized
+            end
+        else 
+            render json: { errors: ["Not authorized"] }, status: :unauthorized
         end
     end
 
     def destroy
-        menus = Menu.all
-        if menus.exists?(publish: false)
-            unpublish_menu = Menu.find_by(publish: false)
-            delete_recipe = Recipe.find_by(id: params[:id])
-            if unpublish_menu.recipes.exists?(id: delete_recipe.id)
-                render json: { errors: ["Recipe currently exists in your menu!"] }, status: :unauthorized
+        user = User.find_by(id: session[:user_id])
+        if user
+            menus = Menu.all
+            if menus.exists?(publish: false)
+                unpublish_menu = Menu.find_by(publish: false)
+                delete_recipe = Recipe.find_by(id: params[:id])
+
+                if unpublish_menu.recipes.exists?(id: delete_recipe.id)
+                    render json: { errors: ["Recipe currently exists in your menu!"] }, status: :unauthorized
+                
+                else
+                    delete_recipe.destroy
+                    head :no_content
+                end  
             else
-                delete_recipe.destroy
-                head :no_content
-            end  
-        else
-            recipe = Recipe.find_by(id: params[:id])
-            recipe.destroy
+                recipe = Recipe.find_by(id: params[:id])
+                recipe.destroy
+            end
+        else 
+            render json: { errors: ["Not authorized"] }, status: :unauthorized
         end
     end
 
@@ -52,6 +73,7 @@ class RecipesController < ApplicationController
         if user
             recipe = user.recipes.find_by(id: params[:id])
             menus = recipe.menus.where(publish: true)
+
             render json: menus, include: ['user', 'menu_to_recipes']
         else
             render json: { errors: ["Not authorized"] }, status: :unauthorized
@@ -59,20 +81,34 @@ class RecipesController < ApplicationController
     end
 
     def recipes_search
-        recipes = Recipe.search(params[:recipe_name])
-        render json: recipes, include: ['reviews', 'user']
+        user = User.find_by(id: session[:user_id])
+
+        if user
+            recipes = Recipe.search(params[:recipe_name])
+
+            render json: recipes, include: ['reviews', 'user']
+        else
+            render json: { errors: ["Not authorized"] }, status: :unauthorized
+        end
     end
 
     def recipes_filter
-        recipes = Recipe.all
-        recipes = recipes.by_meal(params[:meal]) if params[:meal].present?
-        render json: recipes, include: ['reviews', 'user']
+        user = User.find_by(id: session[:user_id])
+
+        if user
+            recipes = Recipe.all
+            recipes = recipes.by_meal(params[:meal]) if params[:meal].present?
+
+            render json: recipes, include: ['reviews', 'user']
+        else
+            render json: { errors: ["Not authorized"] }, status: :unauthorized
+        end
     end
 
     private
 
     def recipe_params
-        params.permit(:recipe_name, :meal, :description, :calories, :prep_time, :recipe_pic, :user_id, :active, steps: [], ingredients: [])
+        params.permit(:recipe_name, :meal, :description, :calories, :prep_time, :recipe_pic, :active, steps: [], ingredients: [])
     end
     
 end
